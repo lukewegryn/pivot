@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+</head>
+<input id="ipaddress" value="192.168.51.14"></input>
+<button onclick="skipAhead();">Pivot!!</button>
+<div class="slidecontainer">
+  <input oninput="updateSliderLabel(this.value);" type="range" min="1" max="50" value="13" class="slider" id="skipDistance"><label id="sliderLabel">13</label>
+</div>
+<audio id="audio" src="pivot-trimmed.mp3"></audio>
+<script>
+function updateSliderLabel(value){
+	document.getElementById('sliderLabel').innerHTML = value;
+}
+
+function play() {
+  var audio = document.getElementById("audio");
+  audio.play();
+}
+//https://www.npmjs.com/package/node-roku
+function skipAhead(){
+	console.log("Test")
+	var ip = document.getElementById('ipaddress').value
+	var xhr = new XMLHttpRequest();
+	play()
+	for(var i = 0; i < Number(document.getElementById('skipDistance').value); i++){
+		try{
+			url = "http://" + ip + ":8060/keypress/"
+			xhr.open("POST", url + "Right", false);
+			xhr.send("localhost");
+		} catch {}
+	}
+	try{
+		xhr.open("POST", url + "Enter", false);
+		xhr.send("localhost");
+	} catch {}
+}
+</script>
+</html>
