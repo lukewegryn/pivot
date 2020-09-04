@@ -1,0 +1,54 @@
+<!doctype html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Hacky Roku Skip</title>
+
+      <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+      <meta name="description" content="Hacky skip ahead while watching recorded shows on YoutubeTV with Roku.">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="apple-touch-icon" href="assets/images/logo.png">
+
+  </head>
+  <body>
+    <div class="verify-background blur-background"></div>
+    <div class="modal js-modal is-active">
+      <h1 class="modal-h1">Hacky Roku Skip</h1>
+      <div class="separator"></div>
+      <!-- <p class="modal-p modal-p-verify-header"><b>We've encountered an error.</b></p> -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group control-group">
+                    <input oninput="checkIP(this.value);" class="form-control" id="ip-address" type="text" placeholder="Roku IP Address (192.168.51.14)" required data-validation-required-message="ip-address">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group control-group">
+                  <div class="form-control">
+                    <button onclick="toggleReverse();" class="toggle toggle-left col-xs-6" id="toggle-reverse">Reverse</button>
+                    <button onclick="toggleForward();" class="toggle toggle-right selected col-xs-6" id="toggle-forward">Forward</button>
+                  </div>
+                    <!-- <input class="form-control" id="direction" type="se" placeholder="Roku IP Address (192.168.51.14)" required data-validation-required-message="ip-address"> -->
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-12">
+                <div class="form-group control-group">
+                    <input oninput="updateSliderLabel(this.value);" class="slider" type="range" min="1" max="25" value="13" id="skip-distance"></input>
+                    <label class="form-control" id="distance-label">Distance: 3:00 (approximately)</label>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+          <button class="btn btn-lg modal-button pivot-button-big" id="pivot-button" onclick="skipAhead();" disabled>PIVOT</button>
+        </div>
+    </div>
+    <audio id="audio" src="pivot-trimmed.mp3"></audio>
+
+    <link rel="stylesheet" href="assets/css/pivot.min.css" />
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <script src="assets/js/pivot.min.js"></script>
+
+  </body>
+</html>
