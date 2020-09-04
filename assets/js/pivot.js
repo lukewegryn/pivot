@@ -3,7 +3,9 @@ var pivotButton = document.getElementById("pivot-button");
 var reverse = document.getElementById("toggle-reverse");
 var forward = document.getElementById("toggle-forward");
 
-document.getElementById("ip-address").value = localStorage.getItem("ip-address");
+var ip = localStorage.getItem("ip-address");
+document.getElementById("ip-address").value = ip;
+checkIP(ip);
 
 function str_pad_left(string,pad,length) {
     return (new Array(length+1).join(pad)+string).slice(-length);
